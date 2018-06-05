@@ -16,3 +16,6 @@
 * npm v6.0.0
 * webpack @4.10.2
 
+### build result
+![image](https://user-images.githubusercontent.com/9464221/40954331-b6e50c58-68b6-11e8-9e11-f5689d65cf2f.png)
+
