@@ -14,7 +14,10 @@ module.exports = {
       path.resolve(__dirname, 'src/module')
     ]
   },
-  stats: 'normal',
+  stats: 'verbose',
+  optimization: {
+    minimize: false
+  },
   module: {
     rules: [
       {
@@ -25,6 +28,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ]
 };
