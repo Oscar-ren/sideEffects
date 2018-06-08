@@ -19,3 +19,16 @@
 ### build result
 ![image](https://user-images.githubusercontent.com/9464221/40954331-b6e50c58-68b6-11e8-9e11-f5689d65cf2f.png)
 
+### reason
+babel transform the module to commonjs, webpack can't treeshaking the commonjs module.
+
+we should config below, let webpack deal with the row code, since the webpack@2, webpack can deal with es6 import and export default syntax.
+```javascript
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }]
+  ]
+}
+```
