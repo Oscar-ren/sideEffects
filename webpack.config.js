@@ -1,11 +1,9 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: 'production',
-  entry: './src/sideEffects.js',
   output: {
-    filename: 'sideEffects.js',
+    filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
@@ -22,12 +20,33 @@ module.exports = {
     rules: [
       {
         test: /\.js/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ["@babel/preset-env", {
+                targets: {
+                  ie: 9
+                },
+                modules: false,
+                useBuiltIns: false
+              }]
+            ],
+            plugins: [
+              ["@babel/plugin-transform-runtime", {
+                "helpers": false,
+                "polyfill": false,
+                "regenerator": false,
+                "useBuiltIns": true
+              }]
+            ]
+          }
+        },
+        exclude: /node_modules/,
+
       }
     ]
   },
   plugins: [
-    // new BundleAnalyzerPlugin()
   ]
 };
