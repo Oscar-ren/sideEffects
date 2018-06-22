@@ -1,18 +1,21 @@
-module.exports = function() {
+module.exports = function(api) {
+  api.cache(true);
+
   const presets = [
     ["@babel/preset-env", {
       targets: {
         ie: 9
       },
       modules: false,
-      useBuiltIns: 'usage'
+      useBuiltIns: "usage"
     }]
   ];
   const plugins = [
     ["@babel/plugin-transform-runtime", {
-      "helpers": false,
+      "helpers": true,
       "polyfill": false,
-      "regenerator": true
+      "regenerator": false,
+      "useBuiltIns": false
     }]
   ];
 
